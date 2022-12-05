@@ -1,1 +1,3 @@
 README.md file
+
+On our project, test automation team is strictly separated from functional testing one, and team members do not intersect with each other, so the knowledge of an ordinary tester about the activities of the TA team is limited, mainly, by the available documentation on Confluence. Mostly, test automation engineers write test cases covering regression testing. These cases are executed nightly using CI/CD pipelines, and test results results are available for analysis in ADO. In case of a failure, respective test is re-runs manually, and if error persists, test is marked as failed, and test analysis task is created and put into backlog. Automated tests are written on .Net and cover mostly unit tests and API, with a smaller part of UI ones.
