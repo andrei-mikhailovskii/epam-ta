@@ -6,18 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class IndexPageNavBar {
 
-    @FindBy(css = "ul.m-l8>li>a[href='index.html']")
+    @FindBy(css = "ul.m-l8>li")
+    private List<WebElement> listOfHeaderElements;
+
+    @FindBy(linkText = "HOME")
     private WebElement homeTab;
 
-    @FindBy(css = "ul.m-l8>li>a[href='contacts.html']")
+    @FindBy(linkText = "CONTACT FORM")
     private WebElement contactFormTab;
 
-    @FindBy(css = "ul.m-l8>li>a.dropdown-toggle")
+    @FindBy(linkText = "SERVICE")
     private WebElement serviceDropDown;
 
-    @FindBy(css = "ul.m-l8>li>a[href='metals-colors.html']")
+    @FindBy(linkText = "METALS & COLORS")
     private WebElement metalAndColorsTab;
 
     public IndexPageNavBar(WebDriver driver) {
@@ -28,15 +33,14 @@ public class IndexPageNavBar {
     public void verifyNavBarContent() {
 
         SoftAssertions softly = new SoftAssertions();
+
+        softly.assertThat(listOfHeaderElements.size() == 4);
+
         softly.assertThat(homeTab.isDisplayed());
         softly.assertThat(contactFormTab.isDisplayed());
         softly.assertThat(serviceDropDown.isDisplayed());
         softly.assertThat(metalAndColorsTab.isDisplayed());
 
-        softly.assertThat(homeTab.getText()).isEqualTo("HOME");
-        softly.assertThat(contactFormTab.getText()).isEqualTo("CONTACT FORM");
-        softly.assertThat(serviceDropDown.getText()).isEqualTo("SERVICE");
-        softly.assertThat(metalAndColorsTab.getText()).isEqualTo("METALS & COLORS");
         softly.assertAll();
     }
 

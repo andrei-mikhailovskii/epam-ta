@@ -35,7 +35,7 @@ public class ExerciseTwoTest extends AbstractChromeTest {
         softly.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo("ROMAN IOVLEV");
 
         //Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.cssSelector("ul.m-l8>li>a.dropdown-toggle")).click();
+        driver.findElement(By.linkText("SERVICE")).click();
 
         List<WebElement> options = driver.findElements(By.cssSelector("ul.m-l8>li>ul.dropdown-menu>li"));
 
