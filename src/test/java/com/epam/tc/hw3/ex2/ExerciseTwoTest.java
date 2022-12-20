@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.ex2;
 
 import com.epam.tc.hw3.AbstractChromeTest;
+import com.epam.tc.hw3.page.IndexPage;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -15,9 +16,26 @@ import java.util.List;
 
 public class ExerciseTwoTest extends AbstractChromeTest {
 
+    private String correctPageTitle = "Home Page";
+    private String userName = "Roman";
+    private String userPassword = "Jdi1234";
+    private String correctUserName = "ROMAN IOVLEV";
+
     @Test
     public void exerciseTwo() {
-        SoftAssertions softly = new SoftAssertions();
+
+        //Assert Browser title
+        //Perform login, Assert Username is loggined
+        IndexPage indexPage = new IndexPage(driver);
+        indexPage.verifyTitle(driver, correctPageTitle)
+                .loginUser(driver, userName, userPassword)
+                .searchForUserNameElement()
+                .verifyLogin(correctUserName);
+
+
+
+
+        /*SoftAssertions softly = new SoftAssertions();
 
         //Assert Browser title
         softly.assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo("Home Page");
@@ -120,7 +138,7 @@ public class ExerciseTwoTest extends AbstractChromeTest {
         }
         softly.assertThat(individualLogs == 4).as("Lack of log entries").isTrue();
 
-        softly.assertAll();
+        softly.assertAll();*/
 
     }
 

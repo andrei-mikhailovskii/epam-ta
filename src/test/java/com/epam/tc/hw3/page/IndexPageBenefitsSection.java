@@ -53,7 +53,7 @@ public class IndexPageBenefitsSection {
         return this;
     }
 
-    public void verifyImagesDisplayed() {
+    public IndexPageBenefitsSection verifyImagesDisplayed() {
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(iconPractise.isDisplayed());
         softly.assertThat(iconCustom.isDisplayed());
@@ -61,6 +61,8 @@ public class IndexPageBenefitsSection {
         softly.assertThat(iconBase.isDisplayed());
 
         softly.assertAll();
+
+        return this;
     }
 
     public IndexPageBenefitsSection searchForTextQuantity() {
