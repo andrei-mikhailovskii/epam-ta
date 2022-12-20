@@ -5,14 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 public class IndexPageNavBar {
-
-    private static final int WAIT_TIMEOUT_SEC = 5;
 
     @FindBy(css = "ul.m-l8>li>a[href='index.html']")
     private WebElement homeTab;

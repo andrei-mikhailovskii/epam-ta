@@ -2,6 +2,8 @@ package com.epam.tc.hw3.ex1;
 
 import com.epam.tc.hw3.AbstractChromeTest;
 import com.epam.tc.hw3.page.IndexPage;
+import com.epam.tc.hw3.page.IndexPageBenefitsSection;
+import com.epam.tc.hw3.page.IndexPageIFrame;
 import com.epam.tc.hw3.page.IndexPageNavBar;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
@@ -23,14 +25,14 @@ public class ExerciseOneTest extends AbstractChromeTest {
     private String correctUserName = "ROMAN IOVLEV";
 
     //Assert Browser title
-    @Test(priority = 1)
+    @Test
     public void checkTitle() {
         IndexPage indexPage = new IndexPage(driver);
         indexPage.verifyTitle(driver, correctPageTitle);
     }
 
     //Perform login, Assert Username is loggined
-    @Test(priority = 2)
+    @Test
     public void loginCheck() {
         IndexPage indexPage = new IndexPage(driver);
         indexPage.loginUser(driver, userName, userPassword)
@@ -46,6 +48,33 @@ public class ExerciseOneTest extends AbstractChromeTest {
 
     }
 
+    //Assert that there are 4 images on the Index Page and they are displayed
+    @Test
+    public void imagesCheck() {
+        IndexPageBenefitsSection indexPageBenefitsSection = new IndexPageBenefitsSection(driver);
+        indexPageBenefitsSection
+                .searchForImagesQuantity()
+                .verifyImagesDisplayed();
+    }
+
+    //Assert that there are 4 texts on the Index Page under icons and they have proper text
+    @Test
+    public void textCheck() {
+        IndexPageBenefitsSection indexPageBenefitsSection = new IndexPageBenefitsSection(driver);
+        indexPageBenefitsSection
+                .searchForTextQuantity()
+                .verifyText();
+
+    }
+
+    //Assert that there is the iframe with “Frame Button” exist
+    @Test
+    public void iframeExists() {
+
+        IndexPageIFrame indexPageIFrame = new IndexPageIFrame();
+        indexPageIFrame.iFramePresense();
+
+    }
 
 
 
@@ -53,43 +82,6 @@ public class ExerciseOneTest extends AbstractChromeTest {
 
 
    /*
-    //Assert that there are 4 images on the Index Page and they are displayed
-    @Test
-    public void imagesCheck() {
-
-        SoftAssertions softly = new SoftAssertions();
-        List<WebElement> searchResults = driver.findElements(By.className("benefit-icon"));
-        softly.assertThat(searchResults.size() == 4).as("Images quantity inconsistency").isTrue();
-
-        softly.assertThat(driver.findElement(By.className("icon-practise")).isDisplayed());
-        softly.assertThat(driver.findElement(By.className("icon-custom")).isDisplayed());
-        softly.assertThat(driver.findElement(By.className("icon-multi")).isDisplayed());
-        softly.assertThat(driver.findElement(By.className("icon-base")).isDisplayed());
-
-        softly.assertAll();
-
-    }
-
-    //Assert that there are 4 texts on the Index Page under icons and they have proper text
-    @Test
-    public void textCheck() {
-
-        SoftAssertions softly = new SoftAssertions();
-        List<WebElement> searchResults = driver.findElements(By.className("benefit-txt"));
-        softly.assertThat(searchResults.size() == 4).as("Texts quantity inconsistency").isTrue();
-
-        softly.assertThat(driver
-                .findElement(By.xpath("//div[normalize-space(span) = "
-                        + "'To include good practicesand ideas from successfulEPAM project']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = "
-                + "'To be flexible andcustomizable']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//span[(text()='To be multiplatform ')]")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = 'Already "
-                + "have good base(about 20 internal andsome external projects),wish to get more…']")).isDisplayed());
-        softly.assertAll();
-
-    }
-
     //Assert that there is the iframe with “Frame Button” exist
     @Test
     public void iframeExists() {
