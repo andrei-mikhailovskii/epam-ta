@@ -1,13 +1,12 @@
 package com.epam.tc.hw3.page;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class IndexPageIFrame {
 
@@ -21,7 +20,7 @@ public class IndexPageIFrame {
         PageFactory.initElements(driver, this);
     }
 
-    public void iFrameExists(WebDriver driver) {
+    public void iframeExists(WebDriver driver) {
 
         int buttonCount = 0;
 

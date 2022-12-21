@@ -1,18 +1,12 @@
 package com.epam.tc.hw3.ex1;
 
 import com.epam.tc.hw3.AbstractChromeTest;
-import com.epam.tc.hw3.page.*;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.epam.tc.hw3.page.IndexPage;
+import com.epam.tc.hw3.page.IndexPageBenefitsSection;
+import com.epam.tc.hw3.page.IndexPageIFrame;
+import com.epam.tc.hw3.page.IndexPageLeftSection;
+import com.epam.tc.hw3.page.IndexPageNavBar;
 import org.testng.annotations.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ExerciseOneTest extends AbstractChromeTest {
 
@@ -49,7 +43,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
         //Assert that there is the iframe with “Frame Button” exist
         //Switch to the iframe and check that there is “Frame Button” in the iframe
         IndexPageIFrame indexPageIFrame = new IndexPageIFrame(driver);
-        indexPageIFrame.iFrameExists(driver);
+        indexPageIFrame.iframeExists(driver);
 
         //Assert that there are 5 items in the Left Section are displayed, and they have proper text
         IndexPageLeftSection indexPageLeftSection = new IndexPageLeftSection(driver);

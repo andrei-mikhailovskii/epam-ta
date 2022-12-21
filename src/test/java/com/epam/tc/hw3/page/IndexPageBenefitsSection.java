@@ -1,14 +1,13 @@
 package com.epam.tc.hw3.page;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class IndexPageBenefitsSection {
 

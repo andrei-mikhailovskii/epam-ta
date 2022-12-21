@@ -1,32 +1,27 @@
 package com.epam.tc.hw3.page;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.assertj.core.api.SoftAssertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DifferentElementsPageMainContainer {
 
     private String checkboxWater = "Water";
     private String checkboxWind = "Wind";
-
     private String radioSelen = "Selen";
-
     private String colorYellow = "Yellow";
-
     private String logMetalPart = "metal";
     private String logColorPart = "Color";
+    private String inputElementTagName = "input";
 
     @FindBy(css = ".label-checkbox")
     private List<WebElement> checkboxes;
-
-    @FindBy(css = "input")
-    private WebElement checkInput;
 
     @FindBy(css = ".label-radio")
     private List<WebElement> radio;
@@ -71,22 +66,19 @@ public class DifferentElementsPageMainContainer {
         CharSequence wind = null;
         for (WebElement opt : checkboxes) {
             if (opt.getText().equals(checkboxWater)) {
-                water = String.valueOf(checkInput.isSelected());
-                System.out.println(water);
+                water = String.valueOf(opt.findElement(By.tagName(inputElementTagName)).isSelected());
             } else if (opt.getText().equals(checkboxWind)) {
-                wind = String.valueOf(checkInput.isSelected());
-                System.out.println(wind);
+                wind = String.valueOf(opt.findElement(By.tagName(inputElementTagName)).isSelected());
             }
         }
 
         //turn boolean value of radio button into char sequence for further check in assertions
         CharSequence metal = null;
         for (WebElement opt : radio) {
-            if (checkInput.isSelected()) {
+            if (opt.findElement(By.tagName(inputElementTagName)).isSelected()) {
                 metal = opt.getText();
             }
         }
-        System.out.println("Metal - " + metal);
 
         //turn color option into char sequence for further check in assertions
         Select color = new Select(colorDropdown);

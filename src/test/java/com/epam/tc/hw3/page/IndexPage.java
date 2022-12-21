@@ -1,15 +1,14 @@
 package com.epam.tc.hw3.page;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class IndexPage {
 
@@ -33,7 +32,7 @@ public class IndexPage {
     @FindBy(id = "user-name")
     private WebElement loggedInUserName;
 
-    public IndexPage (WebDriver driver) {
+    public IndexPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -57,8 +56,8 @@ public class IndexPage {
     }
 
     public IndexPage searchForUserNameElement() {
-            assertThat(loggedInUserNames.size() == 0).as("Login failed").isTrue();
-            return this;
+        assertThat(loggedInUserNames.size() == 0).as("Login failed").isTrue();
+        return this;
     }
 
     public void verifyLogin(String correctUserName) {
