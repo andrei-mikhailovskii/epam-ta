@@ -30,19 +30,16 @@ public class ExerciseTwoTest extends AbstractChromeTest {
 
         //select Water and Wind checkboxes
         //select Selen radio button
+        //check that each element has an individual log
+        //check that log values correspond the values of checkboxes, radio button, dropdown
         DifferentElementsPageMainContainer diffElemPageMainContainer = new DifferentElementsPageMainContainer(driver);
         diffElemPageMainContainer.selectCheckboxes()
                 .selectRadiobuttons()
-                .selectColor();
-
+                .selectColor()
+                .verifyLogs(driver);
 
 
         /*
-        //select Yellow color in dropdown
-        Select color = new Select(driver.findElement(By.cssSelector("div.colors>.uui-form-element")));
-        color.selectByVisibleText("Yellow");
-
-
         //turn boolean values of checkboxes into char sequences for further check in assertions
         CharSequence water = null;
         CharSequence wind = null;

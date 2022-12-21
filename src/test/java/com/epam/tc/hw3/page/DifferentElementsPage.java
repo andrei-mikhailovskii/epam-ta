@@ -39,9 +39,7 @@ public class DifferentElementsPage {
     }
     public DifferentElementsPage openDifferentElementsPage(WebDriver driver, String userName, String userPassword) {
 
-        if (loggedInUserNames.size() == 0) {
-
-        } else {
+        if (loggedInUserNames.size() != 0) {
             new WebDriverWait(driver, WAIT_TIMEOUT_SEC)
                     .until(ExpectedConditions.elementToBeClickable(loginDropdown))
                     .click();
