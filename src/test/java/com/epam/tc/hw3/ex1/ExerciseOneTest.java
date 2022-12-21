@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.ex1;
 
 import com.epam.tc.hw3.AbstractChromeTest;
+import com.epam.tc.hw3.PropertiesExtractor;
 import com.epam.tc.hw3.page.IndexPage;
 import com.epam.tc.hw3.page.IndexPageBenefitsSection;
 import com.epam.tc.hw3.page.IndexPageIFrame;
@@ -11,8 +12,6 @@ import org.testng.annotations.Test;
 public class ExerciseOneTest extends AbstractChromeTest {
 
     private String correctPageTitle = "Home Page";
-    private String userName = "Roman";
-    private String userPassword = "Jdi1234";
     private String correctUserName = "ROMAN IOVLEV";
 
     //Assert Browser title
@@ -23,7 +22,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
         //Perform login, Assert Username is loggined
         IndexPage indexPage = new IndexPage(driver);
         indexPage.verifyTitle(driver, correctPageTitle)
-                .loginUser(driver, userName, userPassword)
+                .loginUser(driver, PropertiesExtractor.getUsername(), PropertiesExtractor.getPassword())
                 .searchForUserNameElement()
                 .verifyLogin(correctUserName);
 
