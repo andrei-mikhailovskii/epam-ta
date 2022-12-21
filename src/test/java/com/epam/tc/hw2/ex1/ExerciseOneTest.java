@@ -1,12 +1,9 @@
 package com.epam.tc.hw2.ex1;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import com.epam.tc.hw2.AbstractChromeTest;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,102 +11,65 @@ import org.testng.annotations.Test;
 
 public class ExerciseOneTest extends AbstractChromeTest {
 
-    //Assert Browser title
     @Test
-    public void checkTitle() {
-
-        assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo("Home Page");
-
-    }
-
-    //Perform login, Assert Username is loggined
-    @Test
-    public void login() {
-
-        try {
-            new WebDriverWait(driver, 5)
-                    .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.uui-profile-menu"))).click();
-            driver.findElement(By.id("name")).sendKeys("Roman");
-            driver.findElement(By.id("password")).sendKeys("Jdi1234");
-            driver.findElement(By.id("login-button")).click();
-        } catch (NoSuchElementException e) {
-            System.err.println("No element: " + e);
-        }
-
-        List<WebElement> searchResults = driver.findElements(By.id("user-name"));
+    public void exerciseOne() {
 
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(searchResults.size() > 0).as("Login failed").isTrue();
+
+        //Assert Browser title
+        softly.assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo("Home Page");
+
+        //Perform login, Assert Username is loggined
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.uui-profile-menu"))).click();
+        driver.findElement(By.id("name")).sendKeys("Roman");
+        driver.findElement(By.id("password")).sendKeys("Jdi1234");
+        driver.findElement(By.id("login-button")).click();
+
+        List<WebElement> searchResultsUserNameElement = driver.findElements(By.id("user-name"));
+
+        softly.assertThat(searchResultsUserNameElement.size() > 0).as("Login failed").isTrue();
         softly.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo("ROMAN IOVLEV");
-        softly.assertAll();
 
-    }
+        //Assert that there are 4 items on the header section are displayed and they have proper texts
 
-    //Assert that there are 4 items on the header section are displayed and they have proper texts
-    @Test
-    public void navBarCheck() {
+        List<WebElement> searchResultsHeaderElement = driver.findElements(By.cssSelector("ul.m-l8>li"));
+        softly.assertThat(searchResultsHeaderElement.size() == 4);
 
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='index.html']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='contacts.html']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a.dropdown-toggle")).isDisplayed());
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='metals-colors.html']")).isDisplayed());
+        softly.assertThat(driver.findElement(By.linkText("HOME")).isDisplayed());
+        softly.assertThat(driver.findElement(By.linkText("CONTACT FORM")).isDisplayed());
+        softly.assertThat(driver.findElement(By.linkText("SERVICE")).isDisplayed());
+        softly.assertThat(driver.findElement(By.linkText("METALS & COLORS")).isDisplayed());
 
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='index.html']")).getText()).isEqualTo("HOME");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='contacts.html']")).getText()).isEqualTo("CONTACT FORM");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a.dropdown-toggle"))
-                .getText()).isEqualTo("SERVICE");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.m-l8>li>a[href='metals-colors.html']")).getText()).isEqualTo("METALS & COLORS");
-        softly.assertAll();
 
-    }
-
-    //Assert that there are 4 images on the Index Page and they are displayed
-    @Test
-    public void imagesCheck() {
-
-        SoftAssertions softly = new SoftAssertions();
-        List<WebElement> searchResults = driver.findElements(By.className("benefit-icon"));
-        softly.assertThat(searchResults.size() == 4).as("Images quantity inconsistency").isTrue();
+        //Assert that there are 4 images on the Index Page and they are displayed
+        List<WebElement> searchResultsBenefitIcons = driver.findElements(By.className("benefit-icon"));
+        softly.assertThat(searchResultsBenefitIcons.size() == 4).as("Images quantity inconsistency");
 
         softly.assertThat(driver.findElement(By.className("icon-practise")).isDisplayed());
         softly.assertThat(driver.findElement(By.className("icon-custom")).isDisplayed());
         softly.assertThat(driver.findElement(By.className("icon-multi")).isDisplayed());
         softly.assertThat(driver.findElement(By.className("icon-base")).isDisplayed());
 
-        softly.assertAll();
-
-    }
-
-    //Assert that there are 4 texts on the Index Page under icons and they have proper text
-    @Test
-    public void textCheck() {
-
-        SoftAssertions softly = new SoftAssertions();
-        List<WebElement> searchResults = driver.findElements(By.className("benefit-txt"));
-        softly.assertThat(searchResults.size() == 4).as("Texts quantity inconsistency").isTrue();
-
+        //Assert that there are 4 texts on the Index Page under icons and they have proper text
+        List<WebElement> searchResultsBenefitText = driver.findElements(By.className("benefit-txt"));
+        softly.assertThat(searchResultsBenefitText.size() == 4).as("Texts quantity inconsistency");
         softly.assertThat(driver
                 .findElement(By.xpath("//div[normalize-space(span) = "
                         + "'To include good practicesand ideas from successfulEPAM project']")).isDisplayed());
         softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = "
                 + "'To be flexible andcustomizable']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//span[(text()='To be multiplatform ')]")).isDisplayed());
+        softly.assertThat(driver.findElement(By.xpath("//span[(text()='To be multiplatform ')]"))
+                .isDisplayed());
         softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = 'Already "
                 + "have good base(about 20 internal andsome external projects),wish to get more…']")).isDisplayed());
-        softly.assertAll();
 
-    }
-
-    //Assert that there is the iframe with “Frame Button” exist
-    @Test
-    public void iframeExists() {
-
-        List<WebElement> searchResults = driver.findElements(By.id("frame"));
+        //Assert that there is the iframe with “Frame Button” exist
+        List<WebElement> searchResultsIFrame = driver.findElements(By.id("frame"));
 
         int buttonCount = 0;
 
-        for (WebElement e : searchResults) {
+        for (WebElement e : searchResultsIFrame) {
             driver.switchTo().frame("frame");
 
             if ((driver.findElements(By.id("frame-button")).size() > 0)) {
@@ -119,41 +79,40 @@ public class ExerciseOneTest extends AbstractChromeTest {
             driver.switchTo().defaultContent();
         }
 
-        assertThat(buttonCount > 0).as("No iframes with button 'Frame Button'").isTrue();
+        softly.assertThat(buttonCount > 0).as("No iframes with button 'Frame Button'");
 
-    }
 
-    //Switch to the iframe and check that there is “Frame Button” in the iframe
-    @Test
-    public void iframeButton() {
-
+        //Switch to the iframe and check that there is “Frame Button” in the iframe
         driver.switchTo().frame("frame");
 
-        assertThat(driver.findElement(By.id("frame-button")));
+        softly.assertThat(driver.findElement(By.id("frame-button")));
 
         //Switch to original window back
         driver.switchTo().defaultContent();
 
-    }
+        //Assert that there are 5 items in the Left Section are displayed, and they have proper text
+        List<WebElement> searchResultsLeftSection = driver.findElements(By.cssSelector(".sidebar-menu>li"));
+        softly.assertThat(searchResultsLeftSection.size() == 5)
+                .as("There are not 5 elements in the Left Side section");
 
-    //Assert that there are 5 items in the Left Section are displayed, and they have proper text
-    @Test
-    public void leftSection() {
+        int numberOfCorrectTitles = 0;
+        for (WebElement element : searchResultsLeftSection) {
 
-        SoftAssertions softly = new SoftAssertions();
-        List<WebElement> searchResults = driver.findElements(By.cssSelector(".sidebar-menu>li"));
-        softly.assertThat(searchResults.size() == 5).as("There are not 5 elements in the Left Side section").isTrue();
+            String title = element.getText();
 
-        softly.assertThat(driver.findElement(By.cssSelector("ul.sidebar-menu.left > li[index='1']"))
-                .getText()).isEqualTo("Home");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.sidebar-menu.left > li[index='2']"))
-                .getText()).isEqualTo("Contact form");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.sidebar-menu.left > li[index='3']"))
-                .getText()).isEqualTo("Service");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.sidebar-menu.left > li[index='4']"))
-                .getText()).isEqualTo("Metals & Colors");
-        softly.assertThat(driver.findElement(By.cssSelector("ul.sidebar-menu.left > li[index='5']"))
-                .getText()).isEqualTo("Elements packs");
+            if (title.equals("Home")
+                    || title.equals("Contact form")
+                    || title.equals("Service")
+                    || title.equals("Metals & Colors")
+                    || title.equals("Elements packs")) {
+                numberOfCorrectTitles++;
+            }
+
+        }
+
+        softly.assertThat(numberOfCorrectTitles == 5)
+                .as("Some of the Left Section items has improper text");
+
         softly.assertAll();
 
     }

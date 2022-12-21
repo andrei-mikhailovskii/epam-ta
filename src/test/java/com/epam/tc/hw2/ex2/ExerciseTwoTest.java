@@ -22,19 +22,19 @@ public class ExerciseTwoTest extends AbstractChromeTest {
         softly.assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo("Home Page");
 
         //Perform login, Assert Username is loggined
-        try {
-            new WebDriverWait(driver, 5)
-                    .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.uui-profile-menu"))).click();
-            driver.findElement(By.id("name")).sendKeys("Roman");
-            driver.findElement(By.id("password")).sendKeys("Jdi1234");
-            driver.findElement(By.id("login-button")).click();
-        } catch (NoSuchElementException e) {
-            System.err.println("No element: " + e);
-        }
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.uui-profile-menu"))).click();
+        driver.findElement(By.id("name")).sendKeys("Roman");
+        driver.findElement(By.id("password")).sendKeys("Jdi1234");
+        driver.findElement(By.id("login-button")).click();
+
+        List<WebElement> searchResultsUserNameElement = driver.findElements(By.id("user-name"));
+
+        softly.assertThat(searchResultsUserNameElement.size() > 0).as("Login failed").isTrue();
         softly.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo("ROMAN IOVLEV");
 
         //Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.cssSelector("ul.m-l8>li>a.dropdown-toggle")).click();
+        driver.findElement(By.linkText("SERVICE")).click();
 
         List<WebElement> options = driver.findElements(By.cssSelector("ul.m-l8>li>ul.dropdown-menu>li"));
 
@@ -47,7 +47,7 @@ public class ExerciseTwoTest extends AbstractChromeTest {
 
         //select Water and Wind checkboxes
         List<WebElement> checkboxes = new WebDriverWait(driver, 5)
-            .until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(".label-checkbox"))));
+                .until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(".label-checkbox"))));
         for (WebElement opt : checkboxes) {
             if (opt.getText().equals("Water") | opt.getText().equals("Wind")) {
                 opt.click();
