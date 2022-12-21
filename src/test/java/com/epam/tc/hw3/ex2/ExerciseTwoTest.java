@@ -1,22 +1,14 @@
 package com.epam.tc.hw3.ex2;
 
 import com.epam.tc.hw3.AbstractChromeTest;
+import com.epam.tc.hw3.page.DifferentElementsPage;
+import com.epam.tc.hw3.page.DifferentElementsPageMainContainer;
 import com.epam.tc.hw3.page.IndexPage;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ExerciseTwoTest extends AbstractChromeTest {
 
-    private String correctPageTitle = "Home Page";
+    private String pageTitleIndexPage = "Home Page";
     private String userName = "Roman";
     private String userPassword = "Jdi1234";
     private String correctUserName = "ROMAN IOVLEV";
@@ -27,60 +19,25 @@ public class ExerciseTwoTest extends AbstractChromeTest {
         //Assert Browser title
         //Perform login, Assert Username is loggined
         IndexPage indexPage = new IndexPage(driver);
-        indexPage.verifyTitle(driver, correctPageTitle)
+        indexPage.verifyTitle(driver, pageTitleIndexPage)
                 .loginUser(driver, userName, userPassword)
                 .searchForUserNameElement()
                 .verifyLogin(correctUserName);
 
-
-
-
-        /*SoftAssertions softly = new SoftAssertions();
-
-        //Assert Browser title
-        softly.assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo("Home Page");
-
-        //Perform login, Assert Username is loggined
-        try {
-            new WebDriverWait(driver, 5)
-                    .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.uui-profile-menu"))).click();
-            driver.findElement(By.id("name")).sendKeys("Roman");
-            driver.findElement(By.id("password")).sendKeys("Jdi1234");
-            driver.findElement(By.id("login-button")).click();
-        } catch (NoSuchElementException e) {
-            System.err.println("No element: " + e);
-        }
-        softly.assertThat(driver.findElement(By.id("user-name")).getText()).isEqualTo("ROMAN IOVLEV");
-
         //Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.linkText("SERVICE")).click();
-
-        List<WebElement> options = driver.findElements(By.cssSelector("ul.m-l8>li>ul.dropdown-menu>li"));
-
-        for (WebElement opt : options) {
-            if (opt.getText().equals("DIFFERENT ELEMENTS")) {
-                opt.click();
-                break;
-            }
-        }
+        DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
+        differentElementsPage.openDifferentElementsPage(driver, userName, userPassword);
 
         //select Water and Wind checkboxes
-        List<WebElement> checkboxes = new WebDriverWait(driver, 5)
-            .until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(".label-checkbox"))));
-        for (WebElement opt : checkboxes) {
-            if (opt.getText().equals("Water") | opt.getText().equals("Wind")) {
-                opt.click();
-            }
-        }
-
         //select Selen radio button
-        List<WebElement> radio = driver.findElements(By.cssSelector(".label-radio"));
-        for (WebElement opt : radio) {
-            if (opt.getText().equals("Selen")) {
-                opt.click();
-            }
-        }
+        DifferentElementsPageMainContainer diffElemPageMainContainer = new DifferentElementsPageMainContainer(driver);
+        diffElemPageMainContainer.selectCheckboxes()
+                .selectRadiobuttons()
+                .selectColor();
 
+
+
+        /*
         //select Yellow color in dropdown
         Select color = new Select(driver.findElement(By.cssSelector("div.colors>.uui-form-element")));
         color.selectByVisibleText("Yellow");
