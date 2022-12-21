@@ -37,7 +37,7 @@ public class DifferentElementsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public DifferentElementsPage openDifferentElementsPage(WebDriver driver, String userName, String userPassword) {
+    public void openDifferentElementsPage(WebDriver driver, String userName, String userPassword) {
 
         if (loggedInUserNames.size() != 0) {
             new WebDriverWait(driver, WAIT_TIMEOUT_SEC)
@@ -59,7 +59,6 @@ public class DifferentElementsPage {
 
         new WebDriverWait(driver, 5).until(ExpectedConditions.titleIs("Different Elements"));
 
-        return new DifferentElementsPage(driver);
     }
 
 }
