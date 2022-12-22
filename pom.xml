@@ -16,6 +16,12 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -41,6 +47,12 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/libs/calculator-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -84,7 +96,7 @@
 
     <profiles>
         <profile>
-            <id>All</id>
+            <id>AllCalc</id>
             <properties>
                 <suite.xml.file>allcalc.xml</suite.xml.file>
             </properties>
@@ -102,6 +114,12 @@
             <id>MultDiv</id>
             <properties>
                 <suite.xml.file>multdiv.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw2</id>
+            <properties>
+                <suite.xml.file>hw2.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
