@@ -1,12 +1,10 @@
 package com.epam.tc.hw3.page;
 
 import java.util.List;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class IndexPageNavBar {
+public class HeaderNavBar {
 
     @FindBy(css = "ul.m-l8>li")
     private List<WebElement> listOfHeaderElements;
@@ -22,10 +20,6 @@ public class IndexPageNavBar {
 
     @FindBy(linkText = "METALS & COLORS")
     private WebElement metalAndColorsTab;
-
-    public IndexPageNavBar(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
 
     public int listOfHeaderElementsQuantity() {
         return listOfHeaderElements.size();

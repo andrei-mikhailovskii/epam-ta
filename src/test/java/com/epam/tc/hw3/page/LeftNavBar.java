@@ -1,12 +1,10 @@
 package com.epam.tc.hw3.page;
 
 import java.util.List;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class IndexPageLeftSection {
+public class LeftNavBar {
 
     private String leftMenuHomeName = "Home";
     private String leftMenuContactName = "Contact form";
@@ -16,10 +14,6 @@ public class IndexPageLeftSection {
 
     @FindBy(css = ".sidebar-menu>li")
     private List<WebElement> leftSectionElements;
-
-    public IndexPageLeftSection(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
 
     public int leftSectionElementsCount() {
         return leftSectionElements.size();

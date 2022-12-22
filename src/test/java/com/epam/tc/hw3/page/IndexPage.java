@@ -12,6 +12,9 @@ public class IndexPage {
 
     private static final int WAIT_TIMEOUT_SEC = 5;
 
+    private HeaderNavBar headerNavBar;
+    private LeftNavBar leftNavBar;
+
     @FindBy(css = "li.uui-profile-menu")
     private WebElement loginDropdown;
 
@@ -31,7 +34,10 @@ public class IndexPage {
     private WebElement loggedInUserName;
 
     public IndexPage(WebDriver driver) {
+
         PageFactory.initElements(driver, this);
+        headerNavBar = new HeaderNavBar();
+        leftNavBar = new LeftNavBar();
     }
 
     public IndexPage loginUser(WebDriver driver, String userName, String userPassword) {
@@ -47,11 +53,20 @@ public class IndexPage {
     }
 
     public int searchNotLoggedInUserNames() {
+
         return notLoggedInUserNames.size();
     }
 
     public String loginName() {
+
         return loggedInUserName.getText();
     }
 
+    public HeaderNavBar getHeaderNavBar() {
+        return headerNavBar;
+    }
+
+    public LeftNavBar getLeftNavBar() {
+        return leftNavBar;
+    }
 }

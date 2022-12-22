@@ -4,9 +4,7 @@ import com.epam.tc.hw3.AbstractChromeTest;
 import com.epam.tc.hw3.PropertiesExtractor;
 import com.epam.tc.hw3.page.IndexPage;
 import com.epam.tc.hw3.page.IndexPageIFrame;
-import com.epam.tc.hw3.page.IndexPageLeftSection;
 import com.epam.tc.hw3.page.IndexPageMainContainer;
-import com.epam.tc.hw3.page.IndexPageNavBar;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
@@ -31,13 +29,12 @@ public class ExerciseOneTest extends AbstractChromeTest {
         softly.assertThat(indexPage.loginName()).isEqualTo(correctUserName);
 
         //Assert that there are 4 items on the header section are displayed and they have proper texts
-        IndexPageNavBar indexPageNavBar = new IndexPageNavBar(driver);
-        softly.assertThat(indexPageNavBar.listOfHeaderElementsQuantity() == 4).isTrue();
+        softly.assertThat(indexPage.getHeaderNavBar().listOfHeaderElementsQuantity() == 4).isTrue();
 
-        softly.assertThat(indexPageNavBar.getContactFormTab().isDisplayed());
-        softly.assertThat(indexPageNavBar.getContactFormTab().isDisplayed());
-        softly.assertThat(indexPageNavBar.getServiceDropDown().isDisplayed());
-        softly.assertThat(indexPageNavBar.getMetalAndColorsTab().isDisplayed());
+        softly.assertThat(indexPage.getHeaderNavBar().getHomeTab().isDisplayed());
+        softly.assertThat(indexPage.getHeaderNavBar().getContactFormTab().isDisplayed());
+        softly.assertThat(indexPage.getHeaderNavBar().getServiceDropDown().isDisplayed());
+        softly.assertThat(indexPage.getHeaderNavBar().getMetalAndColorsTab().isDisplayed());
 
         //Assert that there are 4 images on the Index Page and they are displayed
         IndexPageMainContainer indexPageMainCont = new IndexPageMainContainer(driver);
@@ -64,11 +61,10 @@ public class ExerciseOneTest extends AbstractChromeTest {
                 .as("No iframes with button 'Frame Button'").isTrue();
 
         //Assert that there are 5 items in the Left Section are displayed, and they have proper text
-        IndexPageLeftSection indexPageLeftSection = new IndexPageLeftSection(driver);
-        softly.assertThat(indexPageLeftSection.leftSectionElementsCount() == 5)
+        softly.assertThat(indexPage.getLeftNavBar().leftSectionElementsCount() == 5)
                 .as("There are not 5 elements in the Left Side section").isTrue();
 
-        softly.assertThat(indexPageLeftSection.leftSectionCorrectTitlesCount() == 5)
+        softly.assertThat(indexPage.getLeftNavBar().leftSectionCorrectTitlesCount() == 5)
                 .as("Some of the Left Section items has improper text").isTrue();
 
         softly.assertAll();
