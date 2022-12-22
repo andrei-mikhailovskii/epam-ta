@@ -1,7 +1,6 @@
 package com.epam.tc.hw3.page;
 
 import java.util.List;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,13 +21,11 @@ public class IndexPageLeftSection {
         PageFactory.initElements(driver, this);
     }
 
-    public void leftSectionElementsCheck() {
+    public int leftSectionElementsCount() {
+        return leftSectionElements.size();
+    }
 
-        SoftAssertions softly = new SoftAssertions();
-
-        softly.assertThat(leftSectionElements.size() == 5)
-                .as("There are not 5 elements in the Left Side section");
-
+    public int leftSectionCorrectTitlesCount() {
         int numberOfCorrectTitles = 0;
         for (WebElement element : leftSectionElements) {
 
@@ -43,12 +40,7 @@ public class IndexPageLeftSection {
             }
 
         }
-
-        softly.assertThat(numberOfCorrectTitles == 5)
-                .as("Some of the Left Section items has improper text");
-
-        softly.assertAll();
-
+        return numberOfCorrectTitles;
     }
 
 }

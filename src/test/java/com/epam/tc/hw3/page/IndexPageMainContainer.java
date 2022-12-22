@@ -1,15 +1,12 @@
 package com.epam.tc.hw3.page;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.List;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class IndexPageBenefitsSection {
+public class IndexPageMainContainer {
 
     @FindBy(className = "benefit-icon")
     private List<WebElement> listOfImages;
@@ -42,42 +39,48 @@ public class IndexPageBenefitsSection {
             + "have good base(about 20 internal andsome external projects),wish to get more…']")
     private WebElement textBase;
 
-    public IndexPageBenefitsSection(WebDriver driver) {
+    public IndexPageMainContainer(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-
-    public IndexPageBenefitsSection searchForImagesQuantity() {
-        assertThat(listOfImages.size() == 4).as("Images quantity inconsistency").isTrue();
-        return this;
+    public int searchForImagesQuantity() {
+        return listOfImages.size();
     }
 
-    public IndexPageBenefitsSection verifyImagesDisplayed() {
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(iconPractise.isDisplayed());
-        softly.assertThat(iconCustom.isDisplayed());
-        softly.assertThat(iconMulti.isDisplayed());
-        softly.assertThat(iconBase.isDisplayed());
-
-        softly.assertAll();
-
-        return this;
+    public WebElement getIconPractise() {
+        return iconPractise;
     }
 
-    public IndexPageBenefitsSection searchForTextQuantity() {
-        assertThat(listOfTexts.size() == 4).as("Texts quantity inconsistency").isTrue();
-        return this;
+    public WebElement getIconCustom() {
+        return  iconCustom;
     }
 
-    public void verifyText() {
-        SoftAssertions softly = new SoftAssertions();
+    public WebElement getIconMulti() {
+        return iconMulti;
+    }
 
-        softly.assertThat(textPractise.isDisplayed());
-        softly.assertThat(textCustom.isDisplayed());
-        softly.assertThat(textMulti.isDisplayed());
-        softly.assertThat(textBase.isDisplayed());
+    public WebElement getIconBase() {
+        return iconBase;
+    }
 
-        softly.assertAll();
+    public int searchForTextQuantity() {
+        return listOfTexts.size();
+    }
+
+    public WebElement getTextPractise() {
+        return textPractise;
+    }
+
+    public WebElement getTextCustom() {
+        return textCustom;
+    }
+
+    public WebElement getTextMulti() {
+        return textMulti;
+    }
+
+    public WebElement getTextBase() {
+        return textBase;
     }
 
 }

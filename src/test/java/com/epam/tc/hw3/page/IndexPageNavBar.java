@@ -1,7 +1,6 @@
 package com.epam.tc.hw3.page;
 
 import java.util.List;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,19 +27,24 @@ public class IndexPageNavBar {
         PageFactory.initElements(driver, this);
     }
 
+    public int listOfHeaderElementsQuantity() {
+        return listOfHeaderElements.size();
+    }
 
-    public void verifyNavBarContent() {
+    public WebElement getHomeTab() {
+        return homeTab;
+    }
 
-        SoftAssertions softly = new SoftAssertions();
+    public WebElement getContactFormTab() {
+        return contactFormTab;
+    }
 
-        softly.assertThat(listOfHeaderElements.size() == 4);
+    public WebElement getServiceDropDown() {
+        return serviceDropDown;
+    }
 
-        softly.assertThat(homeTab.isDisplayed());
-        softly.assertThat(contactFormTab.isDisplayed());
-        softly.assertThat(serviceDropDown.isDisplayed());
-        softly.assertThat(metalAndColorsTab.isDisplayed());
-
-        softly.assertAll();
+    public WebElement getMetalAndColorsTab() {
+        return metalAndColorsTab;
     }
 
 }

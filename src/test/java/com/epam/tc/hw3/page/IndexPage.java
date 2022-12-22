@@ -1,7 +1,5 @@
 package com.epam.tc.hw3.page;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,7 +25,7 @@ public class IndexPage {
     private WebElement loginButton;
 
     @FindBy(css = "span[id='user-name'].hidden")
-    private List<WebElement> loggedInUserNames;
+    private List<WebElement> notLoggedInUserNames;
 
     @FindBy(id = "user-name")
     private WebElement loggedInUserName;
@@ -36,32 +34,24 @@ public class IndexPage {
         PageFactory.initElements(driver, this);
     }
 
-    public IndexPage verifyTitle(WebDriver driver, String correctPageTitle) {
-        assertThat(driver.getTitle()).as("Invalid Browser title").isEqualTo(correctPageTitle);
-        return this;
-    }
-
     public IndexPage loginUser(WebDriver driver, String userName, String userPassword) {
-        if (loggedInUserNames.size() == 0) {
-            return this;
-        } else {
+        if (notLoggedInUserNames.size() != 0) {
             new WebDriverWait(driver, WAIT_TIMEOUT_SEC)
                     .until(ExpectedConditions.elementToBeClickable(loginDropdown))
                             .click();
             searchInputName.sendKeys(userName);
             searchInputPassword.sendKeys(userPassword);
             loginButton.click();
-            return this;
         }
-    }
-
-    public IndexPage searchForUserNameElement() {
-        assertThat(loggedInUserNames.size() == 0).as("Login failed").isTrue();
         return this;
     }
 
-    public void verifyLogin(String correctUserName) {
-        assertThat(loggedInUserName.getText()).isEqualTo(correctUserName);
+    public int searchNotLoggedInUserNames() {
+        return notLoggedInUserNames.size();
+    }
+
+    public String loginName() {
+        return loggedInUserName.getText();
     }
 
 }

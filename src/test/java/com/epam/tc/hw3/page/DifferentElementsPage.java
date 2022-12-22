@@ -12,6 +12,8 @@ public class DifferentElementsPage {
 
     private static final int WAIT_TIMEOUT_SEC = 5;
 
+    private String differentElementsMenuItem = "DIFFERENT ELEMENTS";
+
     @FindBy(css = "li.uui-profile-menu")
     private WebElement loginDropdown;
 
@@ -37,27 +39,18 @@ public class DifferentElementsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openDifferentElementsPage(WebDriver driver, String userName, String userPassword) {
-
-        if (loggedInUserNames.size() != 0) {
-            new WebDriverWait(driver, WAIT_TIMEOUT_SEC)
-                    .until(ExpectedConditions.elementToBeClickable(loginDropdown))
-                    .click();
-            searchInputName.sendKeys(userName);
-            searchInputPassword.sendKeys(userPassword);
-            loginButton.click();
-        }
+    public void openDifferentElementsPage(WebDriver driver) {
 
         serviceDropDown.click();
 
         for (WebElement opt : serviceDropdownElements) {
-            if (opt.getText().equals("DIFFERENT ELEMENTS")) {
+            if (opt.getText().equals(differentElementsMenuItem)) {
                 opt.click();
                 break;
             }
         }
 
-        new WebDriverWait(driver, 5).until(ExpectedConditions.titleIs("Different Elements"));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SEC).until(ExpectedConditions.titleIs("Different Elements"));
 
     }
 
