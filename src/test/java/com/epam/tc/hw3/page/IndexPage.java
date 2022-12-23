@@ -36,8 +36,12 @@ public class IndexPage {
     public IndexPage(WebDriver driver) {
 
         PageFactory.initElements(driver, this);
+
         headerNavBar = new HeaderNavBar();
+        PageFactory.initElements(driver, headerNavBar);
+
         leftNavBar = new LeftNavBar();
+        PageFactory.initElements(driver, leftNavBar);
     }
 
     public IndexPage loginUser(WebDriver driver, String userName, String userPassword) {
