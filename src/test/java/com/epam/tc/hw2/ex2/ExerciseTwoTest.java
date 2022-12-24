@@ -47,8 +47,7 @@ public class ExerciseTwoTest extends AbstractChromeTest {
 
         //select Water and Wind checkboxes
         List<WebElement> checkboxes = new WebDriverWait(driver, 5)
-                .until(ExpectedConditions
-                        .visibilityOfAllElements(driver.findElements(By.cssSelector(".label-checkbox"))));
+            .until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(".label-checkbox"))));
         for (WebElement opt : checkboxes) {
             if (opt.getText().equals("Water") | opt.getText().equals("Wind")) {
                 opt.click();

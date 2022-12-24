@@ -44,7 +44,8 @@ public class ExerciseOneTest extends AbstractChromeTest {
 
         //Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> searchResultsBenefitIcons = driver.findElements(By.className("benefit-icon"));
-        softly.assertThat(searchResultsBenefitIcons.size() == 4).as("Images quantity inconsistency");
+        softly.assertThat(searchResultsBenefitIcons.size() == 4)
+                .as("Images quantity inconsistency").isTrue();
 
         softly.assertThat(driver.findElement(By.className("icon-practise")).isDisplayed());
         softly.assertThat(driver.findElement(By.className("icon-custom")).isDisplayed());
@@ -54,15 +55,22 @@ public class ExerciseOneTest extends AbstractChromeTest {
         //Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> searchResultsBenefitText = driver.findElements(By.className("benefit-txt"));
         softly.assertThat(searchResultsBenefitText.size() == 4).as("Texts quantity inconsistency");
-        softly.assertThat(driver
-                .findElement(By.xpath("//div[normalize-space(span) = "
-                        + "'To include good practicesand ideas from successfulEPAM project']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = "
-                + "'To be flexible andcustomizable']")).isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//span[(text()='To be multiplatform ')]"))
-                .isDisplayed());
-        softly.assertThat(driver.findElement(By.xpath("//div[normalize-space(span) = 'Already "
-                + "have good base(about 20 internal andsome external projects),wish to get more…']")).isDisplayed());
+
+        int correctTexts = 0;
+
+        for (WebElement textElement : searchResultsBenefitText) {
+            String text = textElement.getText();
+
+            if (text.equals("To include good practices\nand ideas from successful\nEPAM project")
+                || text.equals("To be flexible and\ncustomizable")
+                || text.equals("To be multiplatform")
+                || text.equals("Already have good base\n(about 20 internal and\nsome external projects),"
+                    + "\nwish to get more…")) {
+                correctTexts++;
+            }
+
+        }
+        softly.assertThat(correctTexts == 4).as("Some of texts is incorrect").isTrue();
 
         //Assert that there is the iframe with “Frame Button” exist
         List<WebElement> searchResultsIFrame = driver.findElements(By.id("frame"));
@@ -79,7 +87,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
             driver.switchTo().defaultContent();
         }
 
-        softly.assertThat(buttonCount > 0).as("No iframes with button 'Frame Button'");
+        softly.assertThat(buttonCount > 0).as("No iframes with button 'Frame Button'").isTrue();
 
 
         //Switch to the iframe and check that there is “Frame Button” in the iframe
@@ -93,7 +101,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
         //Assert that there are 5 items in the Left Section are displayed, and they have proper text
         List<WebElement> searchResultsLeftSection = driver.findElements(By.cssSelector(".sidebar-menu>li"));
         softly.assertThat(searchResultsLeftSection.size() == 5)
-                .as("There are not 5 elements in the Left Side section");
+                .as("There are not 5 elements in the Left Side section").isTrue();
 
         int numberOfCorrectTitles = 0;
         for (WebElement element : searchResultsLeftSection) {

@@ -19,12 +19,9 @@ public class AbstractChromeTest {
         driver.manage().window().maximize();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass
     public void teardown() {
-
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.quit();
     }
 
 }
