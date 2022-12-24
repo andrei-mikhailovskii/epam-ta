@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 public class ExerciseTwoTest extends AbstractChromeTest {
 
     private String correctPageTitle = "Home Page";
-    private String correctUserName = "ROMAN IOVLEV";
     private String checkboxWater = "Water";
     private String checkboxWind = "Wind";
     private String radioMetal = "Selen";
@@ -29,7 +28,7 @@ public class ExerciseTwoTest extends AbstractChromeTest {
         //Perform login, Assert Username is loggined
         indexPage.loginUser(driver, PropertiesExtractor.getUsername(), PropertiesExtractor.getPassword());
         softly.assertThat(indexPage.searchNotLoggedInUserNames() == 0).as("Login failed").isTrue();
-        softly.assertThat(indexPage.loginName()).isEqualTo(correctUserName);
+        softly.assertThat(indexPage.loginName()).isEqualTo(PropertiesExtractor.getCorrectUsername());
 
         //Open through the header menu Service -> Different Elements Page
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);

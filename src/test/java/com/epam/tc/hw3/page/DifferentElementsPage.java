@@ -1,18 +1,16 @@
 package com.epam.tc.hw3.page;
 
+import com.epam.tc.hw3.WebDriverWaitClass;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DifferentElementsPage {
 
-    private static final int WAIT_TIMEOUT_SEC = 5;
-
     private String differentElementsMenuItem = "DIFFERENT ELEMENTS";
+    private String pageTitle = "Different Elements";
 
     @FindBy(css = "li.uui-profile-menu")
     private WebElement loginDropdown;
@@ -50,7 +48,7 @@ public class DifferentElementsPage {
             }
         }
 
-        new WebDriverWait(driver, WAIT_TIMEOUT_SEC).until(ExpectedConditions.titleIs("Different Elements"));
+        WebDriverWaitClass.titleIs(driver, pageTitle);
 
     }
 

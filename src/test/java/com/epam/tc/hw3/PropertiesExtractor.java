@@ -32,4 +32,9 @@ public class PropertiesExtractor {
         return userPassword;
     }
 
+    public static String getCorrectUsername() {
+        String correctUsername = getProperties().getProperty("correctUsername");
+        return correctUsername;
+    }
+
 }

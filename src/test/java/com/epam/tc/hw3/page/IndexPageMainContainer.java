@@ -8,6 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class IndexPageMainContainer {
 
+    private String textPractise = "To include good practices\nand ideas from successful\nEPAM project";
+    private String textCustom = "To be flexible and\ncustomizable";
+    private String textMulti = "To be multiplatform";
+    private String textBase = "Already have good base\n(about 20 internal and\nsome external projects),\n"
+            + "wish to get more…";
+
     @FindBy(className = "benefit-icon")
     private List<WebElement> listOfImages;
 
@@ -25,19 +31,6 @@ public class IndexPageMainContainer {
 
     @FindBy(className = "benefit-txt")
     private List<WebElement> listOfTexts;
-
-    @FindBy(xpath = "//div[normalize-space(span) = 'To include good practicesand ideas from successfulEPAM project']")
-    private WebElement textPractise;
-
-    @FindBy(xpath = "//div[normalize-space(span) = 'To be flexible andcustomizable']")
-    private WebElement textCustom;
-
-    @FindBy(xpath = "//span[(text()='To be multiplatform ')]")
-    private WebElement textMulti;
-
-    @FindBy(xpath = "//div[normalize-space(span) = 'Already "
-            + "have good base(about 20 internal andsome external projects),wish to get more…']")
-    private WebElement textBase;
 
     public IndexPageMainContainer(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -67,20 +60,16 @@ public class IndexPageMainContainer {
         return listOfTexts.size();
     }
 
-    public WebElement getTextPractise() {
-        return textPractise;
+    public int numberOfCorrectTexts() {
+        int numberOfCorrectTexts = 0;
+        for (WebElement element : listOfTexts) {
+            if (element.getText().equals(textPractise)
+                || element.getText().equals(textCustom)
+                || element.getText().equals(textMulti)
+                || element.getText().equals(textBase)) {
+                numberOfCorrectTexts++;
+            }
+        }
+        return numberOfCorrectTexts;
     }
-
-    public WebElement getTextCustom() {
-        return textCustom;
-    }
-
-    public WebElement getTextMulti() {
-        return textMulti;
-    }
-
-    public WebElement getTextBase() {
-        return textBase;
-    }
-
 }

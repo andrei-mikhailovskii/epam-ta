@@ -1,16 +1,13 @@
 package com.epam.tc.hw3.page;
 
+import com.epam.tc.hw3.WebDriverWaitClass;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IndexPage {
-
-    private static final int WAIT_TIMEOUT_SEC = 5;
 
     private HeaderNavBar headerNavBar;
     private LeftNavBar leftNavBar;
@@ -46,9 +43,7 @@ public class IndexPage {
 
     public IndexPage loginUser(WebDriver driver, String userName, String userPassword) {
         if (notLoggedInUserNames.size() != 0) {
-            new WebDriverWait(driver, WAIT_TIMEOUT_SEC)
-                    .until(ExpectedConditions.elementToBeClickable(loginDropdown))
-                            .click();
+            WebDriverWaitClass.elementClickable(driver, loginDropdown);
             searchInputName.sendKeys(userName);
             searchInputPassword.sendKeys(userPassword);
             loginButton.click();

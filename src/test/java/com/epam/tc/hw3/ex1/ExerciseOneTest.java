@@ -49,10 +49,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
         //Assert that there are 4 texts on the Index Page under icons and they have proper text
         softly.assertThat(indexPageMainCont.searchForTextQuantity() == 4).isTrue();
 
-        softly.assertThat(indexPageMainCont.getTextPractise().isDisplayed());
-        softly.assertThat(indexPageMainCont.getTextCustom().isDisplayed());
-        softly.assertThat(indexPageMainCont.getTextMulti().isDisplayed());
-        softly.assertThat(indexPageMainCont.getTextBase().isDisplayed());
+        softly.assertThat(indexPageMainCont.numberOfCorrectTexts() == 4).isTrue();
 
         //Assert that there is the iframe with “Frame Button” exist
         //Switch to the iframe and check that there is “Frame Button” in the iframe
