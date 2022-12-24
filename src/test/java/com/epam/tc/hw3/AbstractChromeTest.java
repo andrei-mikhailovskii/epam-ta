@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 
 public class AbstractChromeTest {
 
-    protected WebDriver webDriver;
+    protected WebDriver driver;
 
     private static final String HOME_PAGE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
 
