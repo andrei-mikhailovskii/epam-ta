@@ -12,10 +12,10 @@ import io.qameta.allure.Story;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
-public class ExerciseOneTest extends AbstractChromeTest {
+public class ExerciseOneTestFailed extends AbstractChromeTest {
 
-    private String correctPageTitle = "Home Page";
-    private String correctUserName = "ROMAN IOVLEV";
+    private String correctPageTitle = "Home Page WRONG";
+    private String correctUserName = "ROMAN IOVLEV WRONG";
 
     SoftAssertions softly = new SoftAssertions();
 
@@ -47,7 +47,7 @@ public class ExerciseOneTest extends AbstractChromeTest {
         IndexPage indexPage = new IndexPage(driver);
         indexPage.loginUser(driver, PropertiesExtractor.getUsername(), PropertiesExtractor.getPassword());
         softly.assertThat(indexPage.searchNotLoggedInUserNames() == 0).as("Login failed").isTrue();
-        softly.assertThat(indexPage.loginName()).isEqualTo(PropertiesExtractor.getCorrectUsername());
+        softly.assertThat(indexPage.loginName()).isEqualTo(correctUserName);
         return softly;
     }
 
