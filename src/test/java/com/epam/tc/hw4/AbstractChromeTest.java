@@ -3,8 +3,10 @@ package com.epam.tc.hw4;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class AbstractChromeTest {
 
@@ -19,6 +21,11 @@ public class AbstractChromeTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(HOME_PAGE_URL);
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    public void setContextAttribute(ITestContext context) {
+        context.setAttribute("driver", driver);
     }
 
     //close browser
