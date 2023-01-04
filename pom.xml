@@ -148,11 +148,17 @@
         </profile>
         <profile>
             <id>hw3</id>
+            <properties>
+                <suite.xml.file>hw3.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml.file>hw3.xml</suite.xml.file>
+                <suite.xml.file>hw4.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
