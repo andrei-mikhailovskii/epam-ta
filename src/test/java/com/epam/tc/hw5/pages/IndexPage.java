@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class IndexPage extends DriverSetup {
+public class IndexPage {
 
     private WebDriver driver;
     private static final String HOME_PAGE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
@@ -44,7 +44,7 @@ public class IndexPage extends DriverSetup {
     }
 
     public void openIndexPage() {
-        DriverSetup.setup().get(HOME_PAGE_URL);
+        driver.get(HOME_PAGE_URL);
     }
 
     public IndexPage loginUser(String userName, String userPassword) {

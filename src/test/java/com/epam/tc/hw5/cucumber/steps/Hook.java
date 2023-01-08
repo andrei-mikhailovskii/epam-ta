@@ -11,9 +11,9 @@ public class Hook {
         DriverSetup.setup();
     }
 
-    //    @After
-    //    public void teardownDriver() {
-    //        DriverSetup.teardown();
-    //    }
+    @After
+    public void teardownDriver() {
+        DriverSetup.teardown();
+    }
 
 }

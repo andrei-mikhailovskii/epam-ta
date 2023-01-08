@@ -10,11 +10,9 @@ public class DriverSetup {
 
     public static WebDriver setup() {
 
-        if (driver == null) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-        }
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
         return driver;
 
     }
