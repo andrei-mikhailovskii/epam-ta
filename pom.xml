@@ -68,6 +68,19 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.10.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.10.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -154,11 +167,17 @@
         </profile>
         <profile>
             <id>hw4</id>
+            <properties>
+                <suite.xml.file>hw4.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml.file>hw4.xml</suite.xml.file>
+                <suite.xml.file>hw5.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
