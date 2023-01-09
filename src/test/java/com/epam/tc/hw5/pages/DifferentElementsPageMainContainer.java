@@ -4,6 +4,7 @@ import com.epam.tc.hw5.pages.enums.Checkbox;
 import com.epam.tc.hw5.pages.enums.ColorDropdown;
 import com.epam.tc.hw5.pages.enums.RadioButton;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,12 +30,14 @@ public class DifferentElementsPageMainContainer {
     }
 
     public DifferentElementsPageMainContainer selectCheckboxes() {
-        for (WebElement opt : checkboxes) {
-            if (opt.getText().equals(Checkbox.WATER.getCheckboxName())
-                    || opt.getText().equals(Checkbox.WIND.getCheckboxName())) {
-                opt.click();
+        checkboxes.stream().map(n -> {
+            if (n.getText().equals(Checkbox.WATER.getCheckboxName())
+                    || n.getText().equals(Checkbox.WIND.getCheckboxName())) {
+                n.click();
             }
-        }
+                return this;
+            }
+        ).collect(Collectors.toList());
         return this;
     }
 
