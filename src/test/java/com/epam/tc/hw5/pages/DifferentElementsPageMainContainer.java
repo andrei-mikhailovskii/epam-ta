@@ -1,5 +1,8 @@
 package com.epam.tc.hw5.pages;
 
+import com.epam.tc.hw5.pages.enums.Checkbox;
+import com.epam.tc.hw5.pages.enums.ColorDropdown;
+import com.epam.tc.hw5.pages.enums.RadioButton;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,11 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class DifferentElementsPageMainContainer {
-
-    private String checkboxWater = "Water";
-    private String checkboxWind = "Wind";
-    private String radioSelen = "Selen";
-    private String colorYellow = "Yellow";
 
     @FindBy(css = ".label-checkbox")
     private List<WebElement> checkboxes;
@@ -32,7 +30,8 @@ public class DifferentElementsPageMainContainer {
 
     public DifferentElementsPageMainContainer selectCheckboxes() {
         for (WebElement opt : checkboxes) {
-            if (opt.getText().equals(checkboxWater) || opt.getText().equals(checkboxWind)) {
+            if (opt.getText().equals(Checkbox.WATER.getCheckboxName())
+                    || opt.getText().equals(Checkbox.WIND.getCheckboxName())) {
                 opt.click();
             }
         }
@@ -41,7 +40,7 @@ public class DifferentElementsPageMainContainer {
 
     public DifferentElementsPageMainContainer selectRadiobuttons() {
         for (WebElement opt : radio) {
-            if (opt.getText().equals(radioSelen)) {
+            if (opt.getText().equals(RadioButton.SELEN.getRadioName())) {
                 opt.click();
             }
         }
@@ -50,7 +49,7 @@ public class DifferentElementsPageMainContainer {
 
     public DifferentElementsPageMainContainer selectColor() {
         Select color = new Select(colorDropdown);
-        color.selectByVisibleText(colorYellow);
+        color.selectByVisibleText(ColorDropdown.YELLOW.getColorName());
         return this;
     }
 
