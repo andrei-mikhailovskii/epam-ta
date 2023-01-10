@@ -154,11 +154,23 @@
         </profile>
         <profile>
             <id>hw4</id>
+            <properties>
+                <suite.xml.file>hw4.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5</id>
+            <properties>
+                <suite.xml.file>hw5.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw6</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml.file>hw4.xml</suite.xml.file>
+                <suite.xml.file>hw6.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>

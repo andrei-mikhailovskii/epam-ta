@@ -1,9 +1,8 @@
 package com.epam.tc.hw6.page;
 
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class HeaderNavBar {
 

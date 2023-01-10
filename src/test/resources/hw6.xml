@@ -8,16 +8,16 @@
         <parameter name="isLocal" value="true"/>
         <parameter name="browserName" value="chrome"/>
         <classes>
-            <class name="com.epam.tc.hw4.ex1.ExerciseOneTest"/>
-            <class name="com.epam.tc.hw4.ex2.ExerciseTwoTest"/>
+            <class name="com.epam.tc.hw6.ex1.ExerciseOneTest"/>
+            <class name="com.epam.tc.hw6.ex2.ExerciseTwoTest"/>
         </classes>
     </test>
     <test name="hw6 firefox">
         <parameter name="isLocal" value="true"/>
         <parameter name="browserName" value="firefox"/>
         <classes>
-            <class name="com.epam.tc.hw4.ex1.ExerciseOneTest"/>
-            <class name="com.epam.tc.hw4.ex2.ExerciseTwoTest"/>
+            <class name="com.epam.tc.hw6.ex1.ExerciseOneTest"/>
+            <class name="com.epam.tc.hw6.ex2.ExerciseTwoTest"/>
         </classes>
     </test>
 </suite>

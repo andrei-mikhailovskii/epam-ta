@@ -1,10 +1,9 @@
 package com.epam.tc.hw6.page;
 
 import com.epam.tc.hw6.page.enums.LeftMenuButton;
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class LeftNavBar {
 
