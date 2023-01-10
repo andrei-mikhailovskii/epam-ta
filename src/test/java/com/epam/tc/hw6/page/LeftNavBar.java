@@ -1,17 +1,12 @@
 package com.epam.tc.hw6.page;
 
+import com.epam.tc.hw6.page.enums.LeftMenuButton;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class LeftNavBar {
-
-    private String leftMenuHomeName = "Home";
-    private String leftMenuContactName = "Contact form";
-    private String leftMenuServiceName = "Service";
-    private String leftMenuMetalsName = "Metals & Colors";
-    private String leftMenuElementPacksName = "Elements packs";
 
     @FindBy(css = ".sidebar-menu>li")
     private List<WebElement> leftSectionElements;
@@ -26,11 +21,11 @@ public class LeftNavBar {
 
             String title = element.getText();
 
-            if (title.equals(leftMenuHomeName)
-                    || title.equals(leftMenuContactName)
-                    || title.equals(leftMenuServiceName)
-                    || title.equals(leftMenuMetalsName)
-                    || title.equals(leftMenuElementPacksName)) {
+            if (title.equals(LeftMenuButton.HOME.getButtonName())
+                    || title.equals(LeftMenuButton.CONTACT_FORM.getButtonName())
+                    || title.equals(LeftMenuButton.SERVICE.getButtonName())
+                    || title.equals(LeftMenuButton.METALS_AND_COLORS.getButtonName())
+                    || title.equals(LeftMenuButton.ELEMENTS_PACKS.getButtonName())) {
                 numberOfCorrectTitles++;
             }
 
