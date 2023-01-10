@@ -1,6 +1,6 @@
 package com.epam.tc.hw6.ex2;
 
-import com.epam.tc.hw6.AbstractChromeTest;
+import com.epam.tc.hw6.DriverSetup;
 import com.epam.tc.hw6.PropertiesExtractor;
 import com.epam.tc.hw6.page.DifferentElementsPage;
 import com.epam.tc.hw6.page.DifferentElementsPageMainContainer;
@@ -13,7 +13,7 @@ import io.qameta.allure.Story;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
-public class ExerciseTwoTest extends AbstractChromeTest {
+public class ExerciseTwoTest extends DriverSetup {
 
     private String correctPageTitle = "Home Page";
     private String checkboxWater = "Water";
