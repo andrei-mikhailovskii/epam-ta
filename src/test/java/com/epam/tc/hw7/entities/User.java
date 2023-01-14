@@ -9,9 +9,9 @@ public class User {
             PropertiesExtractor.getPassword(),
             PropertiesExtractor.getCorrectUsername());
 
-    public String userName;
-    public String password;
-    public String correctFullUserName;
+    private String userName;
+    private String password;
+    private String correctFullUserName;
 
     public User(String userName, String password, String correctFullUserName) {
         this.userName = userName;
