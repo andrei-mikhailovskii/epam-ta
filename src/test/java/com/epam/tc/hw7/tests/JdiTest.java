@@ -10,11 +10,12 @@ public class JdiTest extends TestSetup {
     @Test
     public void metalColorsFormTest() {
 
-        JdiSite.open();
+        JdiSite.homePage.open();
         JdiSite.login(User.ROMAN_IOVLEV);
         JdiSite.homePage.checkLogin();
-        /*metalColorsPage.open();
-        metalColorsPage.fillForm();
+        JdiSite.metalColorsPage.open();
+        JdiSite.metalColorsPage.fillForm();
+        /*metalColorsPage.fillForm();
         metalColorsPage.checkFormFill();
         metalColorsPage.clickSubmit();
         metalColorsPage.checkResultSection();*/
