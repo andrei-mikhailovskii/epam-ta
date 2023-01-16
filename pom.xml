@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.14.0</version>
+            <version>3.141.59</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -173,11 +173,17 @@
         </profile>
         <profile>
             <id>hw5</id>
+            <properties>
+                <suite.xml.file>hw5.xml</suite.xml.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw6</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.xml.file>hw5.xml</suite.xml.file>
+                <suite.xml.file>hw6.xml</suite.xml.file>
             </properties>
         </profile>
     </profiles>
