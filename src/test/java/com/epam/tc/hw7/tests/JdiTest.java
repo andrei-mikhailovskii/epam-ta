@@ -1,22 +1,23 @@
 package com.epam.tc.hw7.tests;
 
+import com.epam.tc.hw7.DataProviderClass;
 import com.epam.tc.hw7.JdiSite;
 import com.epam.tc.hw7.TestSetup;
-import com.epam.tc.hw7.entities.User;
+import com.epam.tc.hw7.entities.MetalColorEntity;
+import com.epam.tc.hw7.entities.UserEntity;
 import org.testng.annotations.Test;
 
 public class JdiTest extends TestSetup {
 
-    @Test
-    public void metalColorsFormTest() {
+    @Test(dataProvider = "JsonData", dataProviderClass = DataProviderClass.class)
+    public void metalColorsFormTest(MetalColorEntity metalColorEntity) {
 
         JdiSite.homePage.open();
-        JdiSite.login(User.ROMAN_IOVLEV);
+        JdiSite.login(UserEntity.ROMAN_IOVLEV);
         JdiSite.homePage.checkLogin();
         JdiSite.metalColorsPage.open();
-        JdiSite.metalColorsPage.fillForm();
-        /*metalColorsPage.fillForm();
-        metalColorsPage.checkFormFill();
+        JdiSite.metalColorsPage.fillForm(metalColorEntity);
+        /*metalColorsPage.checkFormFill();
         metalColorsPage.clickSubmit();
         metalColorsPage.checkResultSection();*/
     }

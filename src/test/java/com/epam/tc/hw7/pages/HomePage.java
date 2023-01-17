@@ -4,7 +4,7 @@ import com.epam.jdi.light.elements.common.Label;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
-import com.epam.tc.hw7.entities.User;
+import com.epam.tc.hw7.entities.UserEntity;
 import com.epam.tc.hw7.forms.LoginForm;
 
 public class HomePage extends WebPage {
@@ -17,13 +17,13 @@ public class HomePage extends WebPage {
     @FindBy(id = "user-name")
     private Label loggedInUserName;
 
-    public void login(User user) {
+    public void login(UserEntity userEntity) {
         userIcon.click();
-        loginForm.login(user);
+        loginForm.login(userEntity);
     }
 
     public void checkLogin() {
-        loggedInUserName.is().text(User.ROMAN_IOVLEV.getCorrectFullUserName());
+        loggedInUserName.is().text(UserEntity.ROMAN_IOVLEV.getCorrectFullUserName());
     }
 
 }

@@ -2,7 +2,7 @@ package com.epam.tc.hw7;
 
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
-import com.epam.tc.hw7.entities.User;
+import com.epam.tc.hw7.entities.UserEntity;
 import com.epam.tc.hw7.pages.HomePage;
 import com.epam.tc.hw7.pages.MetalColorsPage;
 
@@ -18,8 +18,8 @@ public class JdiSite {
         homePage.open();
     }
 
-    public static void login(User user) {
-        homePage.login(user);
+    public static void login(UserEntity userEntity) {
+        homePage.login(userEntity);
     }
 
     public static void checkLogin() {
