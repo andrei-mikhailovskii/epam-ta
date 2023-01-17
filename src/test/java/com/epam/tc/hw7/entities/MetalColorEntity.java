@@ -3,6 +3,7 @@ package com.epam.tc.hw7.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.jdiai.tools.DataClass;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,16 +11,19 @@ import lombok.Setter;
 @Setter
 public class MetalColorEntity {
 
-    //@JsonProperty("summary")
+    @JsonProperty("summary")
     private List<Integer> summary;
-    //@JsonProperty("elements")
+    @JsonProperty("elements")
     private List<String> elements;
-    //@JsonProperty("color")
+    @JsonProperty("color")
     private String color;
-    //@JsonProperty("metals")
+    @JsonProperty("metals")
     private String metals;
-    //@JsonProperty("vegetables")
+    @JsonProperty("vegetables")
     private List<String> vegetables;
+
+    public MetalColorEntity() {
+    }
 
     public MetalColorEntity(List<Integer> summary, List<String> elements,
                             String color, String metals, List<String> vegetables) {

@@ -1,5 +1,6 @@
 package com.epam.tc.hw7;
 
+import com.epam.tc.hw7.entities.MetalColorEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class JsonParserFile {
 
         try(FileReader reader = new FileReader("src/test/resources/JDI_ex8_metalsColorsDataSet.json")) {
 
-            LinkedHashMap<String, JsonDataSet> map = objectMapper.readValue(reader, new TypeReference<LinkedHashMap<String, JsonDataSet>>() {
+            LinkedHashMap<String, MetalColorEntity> map = objectMapper.readValue(reader, new TypeReference<LinkedHashMap<String, MetalColorEntity>>() {
             });
             return  map;
 
