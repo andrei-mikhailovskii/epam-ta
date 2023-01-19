@@ -2,7 +2,6 @@ package com.epam.tc.hw7;
 
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
-import com.epam.tc.hw7.entities.UserEntity;
 import com.epam.tc.hw7.pages.HomePage;
 import com.epam.tc.hw7.pages.MetalColorsPage;
 
@@ -13,17 +12,5 @@ public class JdiSite {
 
     @Url("/metals-colors.html")
     public static MetalColorsPage metalColorsPage;
-
-    public static void open() {
-        homePage.open();
-    }
-
-    public static void login(UserEntity userEntity) {
-        homePage.login(userEntity);
-    }
-
-    public static void checkLogin() {
-        homePage.checkLogin();
-    }
 
 }

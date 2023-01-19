@@ -1,9 +1,6 @@
 package com.epam.tc.hw7.entities;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.jdiai.tools.DataClass;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,21 +8,16 @@ import lombok.Setter;
 @Setter
 public class MetalColorEntity {
 
-    @JsonProperty("summary")
-    private List<Integer> summary;
-    @JsonProperty("elements")
+    private List<String> summary;
     private List<String> elements;
-    @JsonProperty("color")
     private String color;
-    @JsonProperty("metals")
     private String metals;
-    @JsonProperty("vegetables")
     private List<String> vegetables;
 
     public MetalColorEntity() {
     }
 
-    public MetalColorEntity(List<Integer> summary, List<String> elements,
+    public MetalColorEntity(List<String> summary, List<String> elements,
                             String color, String metals, List<String> vegetables) {
         this.summary = summary;
         this.elements = elements;
@@ -34,13 +26,10 @@ public class MetalColorEntity {
         this.vegetables = vegetables;
     }
 
-    /*@Override
-    public String toString() {
-        return "DataSet{" + "summary=" + summary
-                + "elements=" + elements
-                + "color=" + color
-                + "metals=" + metals
-                + "vegetables=" + vegetables + "}";
-    }*/
+    public String getCalculatedSummary() {
+        int oddNumber = Integer.valueOf(getSummary().get(0));
+        int evenNumber = Integer.valueOf(getSummary().get(1));
+        return Integer.toString(oddNumber + evenNumber);
+    }
 
 }

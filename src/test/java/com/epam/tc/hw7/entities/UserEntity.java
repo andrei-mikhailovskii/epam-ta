@@ -23,16 +23,4 @@ public class UserEntity {
         this.correctFullUserName = correctFullUserName;
     }
 
-    /*public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getCorrectFullUserName() {
-        return correctFullUserName;
-    }*/
-
 }
