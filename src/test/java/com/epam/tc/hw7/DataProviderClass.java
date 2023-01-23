@@ -1,16 +1,18 @@
 package com.epam.tc.hw7;
 
 import com.epam.tc.hw7.entities.MetalColorEntity;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderClass {
 
-    LinkedHashMap<String, MetalColorEntity> map = JsonParserFile.fileToMap();
-
     @DataProvider(name = "JsonData")
-    public Object[][] getJsonData() {
+    public Object[][] getJsonData() throws IOException {
+
+        LinkedHashMap<String, MetalColorEntity> map = JsonParserFile.fileToMap();
+
         Object[][] jsonObject;
 
         jsonObject = new Object[map.size()][1];

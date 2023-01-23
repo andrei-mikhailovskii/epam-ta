@@ -11,22 +11,19 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class JsonParserFile {
 
-    public LinkedHashMap fileToMap() {
+    public LinkedHashMap<String, MetalColorEntity> fileToMap() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        try (FileReader reader = new FileReader("src/test/resources/JDI_ex8_metalsColorsDataSet.json")) {
+        FileReader reader = new FileReader("src/test/resources/JDI_ex8_metalsColorsDataSet.json");
 
-            LinkedHashMap<String, MetalColorEntity> map = objectMapper
-                    .readValue(reader, new TypeReference<LinkedHashMap<String, MetalColorEntity>>() {
+        LinkedHashMap<String, MetalColorEntity> map = objectMapper
+                .readValue(reader, new TypeReference<LinkedHashMap<String, MetalColorEntity>>() {
                     });
-            return  map;
 
-        } catch (IOException exception) {
-            System.out.println("JSON parsing error: " + exception);
-        }
-        return null;
+        reader.close();
 
+        return  map;
     }
 
 }
