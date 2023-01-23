@@ -4,10 +4,16 @@ import com.epam.jdi.light.elements.common.Label;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
+import com.epam.tc.hw7.PropertiesExtractor;
 import com.epam.tc.hw7.entities.UserEntity;
 import com.epam.tc.hw7.forms.LoginForm;
 
 public class HomePage extends WebPage {
+
+    public static final UserEntity ROMAN_IOVLEV = new UserEntity(
+            PropertiesExtractor.getUsername(),
+            PropertiesExtractor.getPassword(),
+            PropertiesExtractor.getCorrectUsername());
 
     private LoginForm loginForm;
 
@@ -23,7 +29,7 @@ public class HomePage extends WebPage {
     }
 
     public void checkLogin() {
-        loggedInUserName.is().text(UserEntity.ROMAN_IOVLEV.getCorrectFullUserName());
+        loggedInUserName.is().text(ROMAN_IOVLEV.getCorrectFullUserName());
     }
 
 }

@@ -1,6 +1,5 @@
 package com.epam.tc.hw7.entities;
 
-import com.epam.tc.hw7.PropertiesExtractor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,14 +7,9 @@ import lombok.Setter;
 @Setter
 public class UserEntity {
 
-    public static final UserEntity ROMAN_IOVLEV = new UserEntity(
-            PropertiesExtractor.getUsername(),
-            PropertiesExtractor.getPassword(),
-            PropertiesExtractor.getCorrectUsername());
-
-    private String userName;
-    private String password;
-    private String correctFullUserName;
+    private final String userName;
+    private final String password;
+    private final String correctFullUserName;
 
     public UserEntity(String userName, String password, String correctFullUserName) {
         this.userName = userName;
